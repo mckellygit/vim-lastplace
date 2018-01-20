@@ -51,12 +51,12 @@ fu! s:lastplace()
 		if line("w$") == line("$")
 			"if the last line in the current buffer is
 			"also the last line visible in this window
-			execute "normal! g`\""
+			execute "keepjumps normal! g`\""
 
 		elseif line("$") - line("'\"") > ((line("w$") - line("w0")) / 2) - 1
 			"if we're not at the bottom of the file, center the
 			"cursor on the screen after we make the jump
-			execute "normal! g`\"zz"
+			execute "keepjumps normal! g`\"zz"
 
 		else
 			"otherwise, show as much context as we can by jumping
@@ -65,12 +65,12 @@ fu! s:lastplace()
 			"bottom of the screen. We intentionally leave the
 			"last line blank by pressing <c-e> so the user has a
 			"clue that they are near the end of the file.
-			execute "normal! \G'\"\<c-e>"
+			execute "keepjumps normal! \G'\"\<c-e>"
 		endif
 	endif
 	if foldclosed(".") != -1 && g:lastplace_open_folds
 		"if we're in a fold, make the current line visible
-		execute "normal! zv"
+		execute "keepjumps normal! zv"
 	endif
 endf
 
