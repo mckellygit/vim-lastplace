@@ -69,8 +69,8 @@ fu! s:lastplace()
 		endif
 	endif
 	if foldclosed(".") != -1 && g:lastplace_open_folds
-		"if we're in a fold, make the current line visible
-		execute "keepjumps normal! zv"
+		"if we're in a fold, make the current line visible and recenter screen
+		execute "keepjumps normal! zvzz"
 	endif
 endf
 
