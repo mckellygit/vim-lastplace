@@ -57,17 +57,21 @@ fu! s:lastplace_jump()"{{{
 
 		if line("w$") == line("$")
 			"if the last line in the current buffer is also the last line visible in this window
-			execute "normal! g`\""
+			"mck execute "normal! g`\""
+			execute "keepjumps normal! g`\""
 
 		elseif line("$") - line("'\"") > ((line("w$") - line("w0")) / 2) - 1
 			"if we're not at the bottom of the file, center the cursor on the screen after we make the jump
-			execute "normal! g`\"zz"
+			"mck execute "normal! g`\"zz"
+			execute "keepjumps normal! g`\"zz"
 
 		else
 			"otherwise, show as much context as we can by jumping to the end of the file and then to the mark.
 			"if we pressed zz here, there would be blank lines at the bottom of the screen.
 			"we intentionally leave the last line blank by pressing <c-e> so the user can see that they are near the end of the file.
-			execute "keepjumps normal! \G'\"\<c-e>"
+			"mck execute "keepjumps normal! \G'\"\<c-e>"
+			"with smoothscroll we end up in middle of screen (like zz was pressed) ...
+			execute "keepjumps normal! \G'\"z-"
 		endif
 	endif
 endf"}}}
@@ -79,7 +83,8 @@ fu! s:lastplace_open_folds()
 
 	if foldclosed(".") != -1 && g:lastplace_open_folds
 		"if we're in a fold, make the current line visible and recenter screen
-		execute "normal! zvzz"
+		"mck execute "normal! zvzz"
+		execute "keepjumps normal! zvzz"
 	endif
 endf
 
