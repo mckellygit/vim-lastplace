@@ -71,7 +71,7 @@ fu! s:lastplace_jump()"{{{
 			"we intentionally leave the last line blank by pressing <c-e> so the user can see that they are near the end of the file.
 			"mck execute "keepjumps normal! \G'\"\<c-e>"
 			"with smoothscroll we end up in middle of screen (like zz was pressed) ...
-			execute "keepjumps normal! \G'\"z-"
+			execute "keepjumps normal! \G`\"z-"
 		endif
 	endif
 endf"}}}

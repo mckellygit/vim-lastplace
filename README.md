@@ -1,4 +1,4 @@
-# vim-lastplace v4.4.1
+# vim-lastplace v4.6.0
 
 A [vim](https://www.vim.org/) / [nvim](https://neovim.io/) plugin that intelligently reopens files at your last edit position.
 
@@ -40,7 +40,7 @@ This is a comma separated list.
 By default it is set to:
 
 ```vim
-    let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+    let g:lastplace_ignore = "gitcommit,gitrebase,hgcommit,svn,xxd"
 ````
 
 You can configure buffer types to ignore by setting g:lastplace_ignore_buftype in your vimrc.
@@ -48,7 +48,7 @@ This is a comma separated list.
 By default it is set to:
 
 ```vim
-    let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+    let g:lastplace_ignore_buftype = "help,nofile,quickfix"
 ```
 
 Closed folds are automatically opened when jumping to the last edit position.
@@ -70,9 +70,15 @@ If you do find a bug, please submit a pull request that fixes whatever problem y
 ## Version History
 vim-lastplace uses [semver](http://semver.org/) to manage version numbers.
 
-### 4.4.1
-    - Unreleased
-    - Improve README.md
+### 4.6.0
+- Release Date: tbd
+- Restore column correctly when jumping to the end of a file. (Issue [#35](https://github.com/farmergreg/vim-lastplace/pull/35))
+
+### 4.5.0
+- Release Date: 2024-04-23
+- Improve README.md
+- Add xxd to g:lastplace_ignore
+- Alphabetize g:lastplace_ignore and g:lastplace_ignore_buftype
 
 ### 4.4.0
 - Release Date: 2023-08-24
